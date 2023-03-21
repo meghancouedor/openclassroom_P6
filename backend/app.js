@@ -3,6 +3,8 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json());
+
 //Installation et connexion Mongoose
 const mongoose = require("mongoose");
 mongoose
@@ -15,6 +17,7 @@ mongoose
 
 //Importation des routes
 const userRoutes = require("./routes/user");
+const saucesRoutes = require("./routes/sauces");
 
 //CORS
 app.use((req, res, next) => {
@@ -34,5 +37,7 @@ app.use(express.json());
 
 //Enregistrement des routes
 app.use("/api/auth", userRoutes);
+//app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/api/sauces", saucesRoutes);
 
 module.exports = app;
