@@ -1,5 +1,6 @@
 //Installation Express
 const express = require("express");
+const path = require("path");
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.use(express.json());
 
 //Enregistrement des routes
 app.use("/api/auth", userRoutes);
-//app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/sauces", saucesRoutes);
 
 module.exports = app;

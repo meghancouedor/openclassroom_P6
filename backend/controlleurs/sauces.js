@@ -4,6 +4,7 @@ const Sauce = require("../modeles/sauces");
 exports.createSauces = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
+  console.log("Hello");
   const sauce = new Sauce({
     ...sauceObject,
     imageUrl: `${req.protocol}://${req.get("host")}/images/${
@@ -75,6 +76,7 @@ exports.oneSauce = (req, res, next) => {
 
 //Récupération de toutes les sauces
 exports.allSauces = (req, res, next) => {
+  console.log("Hello2");
   Sauce.find()
     .then((sauces) => res.status(200).json(sauces))
     .catch((error) => res.status(400).json({ error }));
