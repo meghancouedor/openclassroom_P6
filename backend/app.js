@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 
+// Installation de express-mongo-sanitize
+const mongoSanitize = require("express-mongo-sanitize");
+
 //Installation et connexion à Mongoose
 mongoose
   .connect(
@@ -32,6 +35,8 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use(mongoSanitize());
 
 //Enregistrement des routes
 app.use("/api/sauces", saucesRoutes);
