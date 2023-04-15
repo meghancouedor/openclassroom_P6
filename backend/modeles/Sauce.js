@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongodbErrorHandler = require("mongoose-mongodb-errors");
 
 //Objet représentant les différents champs dont le schéma a besoin
 const sauceSchema = mongoose.Schema({
@@ -15,4 +16,5 @@ const sauceSchema = mongoose.Schema({
   usersDisliked: { type: Array, default: [String] },
 });
 
+sauceSchema.plugin(mongodbErrorHandler);
 module.exports = mongoose.model("Sauce", sauceSchema);
